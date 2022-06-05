@@ -54,11 +54,10 @@ public class DBUpdateService extends IntentService {
 				System.currentTimeMillis());
 		Intent notificationIntent = new Intent(this, DBUpdateService.class);
 		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-		notification.setLatestEventInfo(this, getText(R.string.updating_database_title),
-				getText(R.string.updating_database), pendingIntent);
+		//FIXME deprecated now, should look into it
+		//notification.setLatestEventInfo(this, getText(R.string.updating_database_title),
+		//		getText(R.string.updating_database), pendingIntent);
 		startForeground(UPDATING_NOTIFICATION_ID, notification);
-
-
 
 		//put this in a thread
 		mHandler.post(new DisplayToast(this, getText(R.string.updating_database)));
