@@ -561,7 +561,6 @@ public class TraditionalT9 extends InputMethodService implements
 			// but we will manage it ourselves because native Android handling
 			// of the input view is ... flakey at best.
 			// Log.d("onKeyDown", "back pres");
-			onKey(keyCode, null);
 			return isInputViewShown();
 		} else if (keyCode == KeyEvent.KEYCODE_ENTER) {// Let the underlying text editor always handle these.
 			return false;
