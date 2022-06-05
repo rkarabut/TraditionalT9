@@ -539,11 +539,11 @@ public class TraditionalT9 extends InputMethodService implements
 				return super.onKeyDown(keyCode, event);
 			}
 
-		} else if (keyCode == KeyEvent.KEYCODE_DEL) {// Special handling of the delete key: if we currently are
+		} else if (keyCode == KeyEvent.KEYCODE_DEL || keyCode == KeyEvent.KEYCODE_CALL) {// Special handling of the delete key: if we currently are
 			// composing text for the user, we want to modify that instead
 			// of let the application do the delete itself.
 			// if (mComposing.length() > 0) {
-			onKey(keyCode, null);
+			onKey(KeyEvent.KEYCODE_DEL, null);
 			return true;
 			// }
 			// break;
@@ -561,6 +561,7 @@ public class TraditionalT9 extends InputMethodService implements
 			// but we will manage it ourselves because native Android handling
 			// of the input view is ... flakey at best.
 			// Log.d("onKeyDown", "back pres");
+			onKey(keyCode, null);
 			return isInputViewShown();
 		} else if (keyCode == KeyEvent.KEYCODE_ENTER) {// Let the underlying text editor always handle these.
 			return false;
@@ -737,7 +738,7 @@ public class TraditionalT9 extends InputMethodService implements
 				return true;
 			}
 			return false;
-		} else if (keyCode == KeyEvent.KEYCODE_DEL) {
+		} else if (keyCode == KeyEvent.KEYCODE_DEL || keyCode == KeyEvent.KEYCODE_CALL) {
 			return true;
 		} else if (keyCode == KeyEvent.KEYCODE_ENTER) {
 			return false;
